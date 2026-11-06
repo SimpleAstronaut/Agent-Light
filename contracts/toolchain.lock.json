@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-28",
+  "scope": "WP30 embedded firmware only",
+  "mcu": "STM32F042F6P6",
+  "board": "Agent Light Rev A",
+  "firmware_version": "1.0.0",
+  "usb_protocol": 1,
+  "arm_gcc": "10.3.1 20210824 / GNU Arm Embedded 10.3-2021.10",
+  "host_gcc": "MinGW-w64 14.2.0",
+  "python_tools": "3.14 (host tools only; PC Python 3.13 not set up)",
+  "cubemx": {
+    "version": "6.12.1",
+    "database": "DB.6.0.121",
+    "status": "peripheral IOC loaded/saved by installed CLI; not product source generator"
+  },
+  "keil": {
+    "mdk": "5.29.0",
+    "armcc": "5.06 update 6 build 750",
+    "armclang": "6.13.1 (not selected)",
+    "project_compiler": "ARMCC 5.06u6 / RVDS ARM_CM0",
+    "dfp_status": "User project now selects Keil.STM32F0xx_DFP.3.1.1",
+    "build_status": "Debug and Release rebuilt via installed uVision CLI: 0 errors, 0 warnings; SWD pending"
+  },
+  "dependencies": {
+    "STM32CubeF0": {
+      "url": "https://github.com/STMicroelectronics/STM32CubeF0.git",
+      "tag": "v1.11.5",
+      "commit": "e220bfb12a162cfbf3bb65663e987e0d6550e9b4"
+    },
+    "CMSIS_Device_F0": "f3174b2801bbca0b4481d7d8ea62c9d153ce6789",
+    "STM32F0_HAL": "115eb1dc87e26ea29f4f2ca58003650381aabba2",
+    "FreeRTOS": "V10.0.1 bundled in pinned CubeF0 tag",
+    "USB_Device": "bundled in pinned CubeF0 tag; product Setup guard applied without modifying vendor sources"
+  },
+  "hardware_validation": "NOT_RUN: no target USB board detected; COM3/COM4 are Bluetooth"
+}

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-light"
+version = "0.1.1"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = ["aiohttp>=3.11,<4", "pyserial==3.5", "jsonschema>=4.23,<5"]
+
+[project.scripts]
+agent-light = "agent_light.cli:main"
+
+[project.urls]
+Repository = "https://github.com/SimpleAstronaut/Agent-Light"
+
+[tool.setuptools.package-data]
+agent_light = ["*.json"]

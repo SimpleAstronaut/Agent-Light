@@ -1,0 +1,19 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.ps1 text eol=crlf
+*.s text eol=crlf
+*.epro2 binary
+*.zip binary
+*.png binary
+*.jpg binary
+# Preserve EDA exports byte-for-byte so bundled SHA256SUMS remain valid.
+hardware/eda/*.net -text
+hardware/eda/*.csv -text
+hardware/eda/*.tsv -text
+hardware/eda/sources/* -text

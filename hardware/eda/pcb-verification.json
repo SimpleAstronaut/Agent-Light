@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-27",
+  "editor": "JLCEDA Pro 4.1.78",
+  "pcb": "PCB1",
+  "board_size_mm": [12, 40],
+  "copper_layers": 2,
+  "components": 35,
+  "straight_tracks": 305,
+  "vias": 32,
+  "copper_pours": 2,
+  "strict_pcb_drc": [],
+  "unconnected_drc_errors": 0,
+  "manufacturing_status": "DRAFT: actual stackup and USB 90 ohm impedance/matching not yet verified",
+  "hardware_tested": false
+}

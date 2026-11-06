@@ -1,0 +1,5 @@
+# Configure absolute tokenFile/dataDir with the PC-generated overlay before enabling.
+- insert:
+    - id: agent-light-dsh
+      name: agent-light-dsh
+      disabled: true

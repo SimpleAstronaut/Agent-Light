@@ -1,0 +1,23 @@
+// Optional local contract probe. Does not start Web, read chats or change a profile.
+import { createRequire } from 'node:module';
+import assert from 'node:assert/strict';
+import { verifyHost } from '../dist/index.js';
+import { observe } from '../dist/adapter-0.2.1-rc.2.js';
+const entry=process.argv[2];
+if(!entry)throw Error('Pass the absolute installed DSH lib/bin.js path');
+verifyHost(entry);
+const req=createRequire(entry), {Context}=req('@deepseek-ai/cordis');
+const ctx=new Context(), events=[], order=[];
+const agent={session:{header:{id:'synthetic-root'}}};
+ctx.provide('agents',{roots:()=>[agent]});
+ctx.provide('sessionProjections',{snapshot:()=>({values:{userQuestions:{active:[],settled:[]}}}),onChanged:()=>()=>{}});
+ctx.on('user-questions/request',async(_r,next)=>{order.push('answerer');return {answer:true};});
+const dispose=observe(ctx,{send:e=>{events.push(e);if(e.type==='attention_open')order.push('open');if(e.type==='attention_resolve')order.push('resolve');},fault:e=>{throw Error(e);}},'synthetic-key');
+await ctx.serial('agent/created',{agent});
+ctx.emit('session/event',agent.session,{type:'turn/start',data:{turn:1}});
+const result=await ctx.waterfall('user-questions/request',{agent},async()=>{throw Error('unexpected fallback');});
+assert.deepEqual(result,{answer:true});
+assert.deepEqual(order,['open','answerer','resolve']);
+assert.equal(events.filter(e=>e.type==='session_start').length,1);
+dispose();
+console.log('Installed host fingerprints, Cordis global listener and prepend waterfall order: OK');

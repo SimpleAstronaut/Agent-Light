@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["agent","adapter_version","schema_version","verification","health_mode","capabilities"],
+  "properties":{
+    "agent":{"enum":["dsh","codex"]},
+    "adapter_version":{"type":"string"},
+    "schema_version":{"const":1},
+    "verification":{"enum":["unverified","verified","reserved"]},
+    "health_mode":{"const":"producer_lease"},
+    "capabilities":{"type":"object","additionalProperties":{"enum":["unverified","supported","unsupported","reserved"]}}
+  }
+}

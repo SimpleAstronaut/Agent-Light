@@ -1,0 +1,14 @@
+; 模块：ARMCC scatter 链接布局；版本：1.0.0；日期：2026-10-28。
+; 用法：由 MDK 工程 LDads 引用；RESET 向量先放 Flash，RW/ZI 放 SRAM。
+; MSP 768 字节与零大小堆由 startup_stm32f042x6.s 的区域定义提供。
+; STM32F042F6P6: 32 KB Flash / 6 KB RAM，无预留配置页或 bootloader。
+LR_IROM1 0x08000000 0x00008000 {
+  ER_IROM1 0x08000000 0x00008000 {
+    *.o (RESET, +First)
+    *(InRoot$$Sections)
+    .ANY (+RO)
+  }
+  RW_IRAM1 0x20000000 0x00001800 {
+    .ANY (+RW +ZI)
+  }
+}

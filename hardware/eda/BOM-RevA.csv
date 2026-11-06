@@ -1,0 +1,36 @@
+﻿位号,数量,装配状态,参数,封装,制造商,完整MPN,LCSC料号,数据手册,库存,采购数量,批准替代料,核查日期,版本,备注
+J1,1,FIT,连接器类型:Type-C;协议标准:-;公母:母;安装方式:卧贴;触点数量:16P;端口数量:1;额定电流 - 电源:5A;工作温度:-30℃~+80℃;,USB-C_SMD-TYPE-C-31-M-12_1,韩国韩荣,TYPE-C-31-M-12,C165948,https://item.szlcsc.com/datasheet/TYPE-C-31-M-12/177331.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R1,1,FIT,5.1kΩ,R0603,UNI-ROYAL(厚声),0603WAF5101T5E,C23186,https://item.szlcsc.com/datasheet/0603WAF5101T5E/23913.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R2,1,FIT,5.1kΩ,R0603,UNI-ROYAL(厚声),0603WAF5101T5E,C23186,https://item.szlcsc.com/datasheet/0603WAF5101T5E/23913.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+D1,1,FIT,极性:单向;反向截止电压(Vrwm):5.25V;钳位电压:17V;峰值脉冲电流(Ipp):5A;击穿电压(VBR):6V;,SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BL,ST(意法半导体),USBLC6-2SC6,C7519,https://item.szlcsc.com/datasheet/USBLC6-2SC6/7996.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R3,1,FIT,22Ω,R0603,UNI-ROYAL(厚声),0603WAF220JT5E,C23345,https://atta.szlcsc.com/upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R4,1,FIT,22Ω,R0603,UNI-ROYAL(厚声),0603WAF220JT5E,C23345,https://atta.szlcsc.com/upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+F1,1,FIT,耐压(Vmax):6V;最大电流(Imax):100A;保持电流(Ihold):500mA;跳闸电流(Itrip):1A;,F0805,台湾陆海,SMD0805-050,C66452,https://item.szlcsc.com/datasheet/SMD0805-050/67536.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+U1,1,FIT,输出极性:正极;工作电压:6V;输出电压:3.3V;输出电流:500mA;电源纹波抑制比(PSRR):70dB@(1kHz);输出类型:固定;,SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL,MICRONE(南京微盟),ME6211C33M5G-N,C82942,https://item.szlcsc.com/datasheet/ME6211C33M5G-N/84106.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+C1,1,FIT,1uF,C0603,FH(风华),0603B105K250NT,C59302,https://item.szlcsc.com/datasheet/0603B105K250NT/60350.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+C2,1,FIT,1uF,C0603,FH(风华),0603B105K250NT,C59302,https://item.szlcsc.com/datasheet/0603B105K250NT/60350.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R5,1,FIT,0Ω,R0603,UNI-ROYAL(厚声),0603WAF0000T5E,C21189,https://item.szlcsc.com/datasheet/0603WAF0000T5E/21903.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R6,1,DNP,1MΩ,R0603,UNI-ROYAL(厚声),0603WAF1004T5E,C22935,https://item.szlcsc.com/datasheet/0603WAF1004T5E/23662.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,屏蔽RC选件：拆R5后与另一个RC选件同时装配
+C3,1,DNP,1nF,C0603,FH(风华),0603B102K500NT,C44369,https://item.szlcsc.com/datasheet/0603B102K500NT/45371.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,屏蔽RC选件：拆R5后与另一个RC选件同时装配
+U2,1,FIT,CPU内核:ARM Cortex-M0;CPU最大主频:48MHz;CPU位数:32 Bit;,TSSOP-20_L6.5-W4.4-P0.65-LS6.4-BL,ST(意法半导体),STM32F042F6P6,C81000,https://item.szlcsc.com/datasheet/STM32F042F6P6/82150.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+C4,1,FIT,100nF,C0603,FH(风华),0603B104K500NT,C30926,https://item.szlcsc.com/datasheet/0603B104K500NT/31683.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+C5,1,FIT,100nF,C0603,FH(风华),0603B104K500NT,C30926,https://item.szlcsc.com/datasheet/0603B104K500NT/31683.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+C6,1,FIT,4.7uF,C0805,SAMSUNG(三星),CL21A475KAQNNNE,C1779,https://item.szlcsc.com/datasheet/CL21A475KAQNNNE/2131.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R7,1,FIT,680Ω,R0603,UNI-ROYAL(厚声),0603WAF6800T5E,C23228,https://atta.szlcsc.com/upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+LED1,1,FIT,亮度值 Iv=90~100mcd @IF=20mA,LED0805-R-RD,KENTO,KT-0805R,C2295,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R8,1,FIT,680Ω,R0603,UNI-ROYAL(厚声),0603WAF6800T5E,C23228,https://atta.szlcsc.com/upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+LED2,1,FIT,灯头类型:-;发光颜色:黄色;正向压降(Vf):1.8V~2.4V;功率:40mW;正向电流:-;波长:584nm~594nm;二极管配置:独立二极管;透镜颜色:无色透明透镜;色温:-;发光强度:175mcd;发光角度:120°;载带方式:-;工作温度:-40℃~+85℃;,LED0805-R-RD,KENTO,KT-0805Y,C2296,https://item.szlcsc.com/datasheet/KT-0805Y/2669.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R9,1,FIT,680Ω,R0603,UNI-ROYAL(厚声),0603WAF6800T5E,C23228,https://atta.szlcsc.com/upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+LED3,1,FIT,灯头类型:2mmx1.25mm方形灯头;发光颜色:翠绿色;正向压降(Vf):2.6V~3.1V;功率:100mW;正向电流:5mA;波长:513nm~528nm;二极管配置:独立二极管;透镜颜色:无色透明透镜;色温:-;发光强度:430mcd;发光角度:120°;载带方式:-;工作温度:-40℃~+85℃;,LED0805-R-RD,KENTO,KT-0805G,C2297,https://item.szlcsc.com/datasheet/KT-0805G/2670.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R10,1,FIT,10kΩ,R0603,UNI-ROYAL(厚声),0603WAF1002T5E,C25804,https://item.szlcsc.com/datasheet/0603WAF1002T5E/26547.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+C7,1,FIT,100nF,C0603,FH(风华),0603B104K500NT,C30926,https://item.szlcsc.com/datasheet/0603B104K500NT/31683.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R11,1,FIT,10kΩ,R0603,UNI-ROYAL(厚声),0603WAF1002T5E,C25804,https://item.szlcsc.com/datasheet/0603WAF1002T5E/26547.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+R12,1,FIT,1kΩ,R0603,UNI-ROYAL(厚声),0603WAF1001T5E,C21190,https://item.szlcsc.com/datasheet/0603WAF1001T5E/21904.html,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,
+TP1,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP2,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP3,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP4,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP5,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP6,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP7,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针
+TP8,1,裸测试焊盘,,HDR-TH_1P-V-M_XKB_X4611WV-01I-C28D40,,,,,未核验,0,无；替代须重新核对引脚、封装和参数,2026-10-27,Rev A,采用1x1排针焊盘，禁止装配排针

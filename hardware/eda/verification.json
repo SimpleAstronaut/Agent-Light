@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-27",
+  "editor": "JLCEDA Pro 4.1.78",
+  "sheets": 5,
+  "components_including_bare_pads": 35,
+  "fit": 25,
+  "dnp": [
+    "R6",
+    "C3"
+  ],
+  "bare_pads": 8,
+  "connected_pins_checked": 90,
+  "nets": 24,
+  "expected_nc": [
+    "J1-A8",
+    "J1-B8",
+    "U1-4",
+    "U2-2",
+    "U2-3",
+    "U2-9",
+    "U2-10",
+    "U2-11",
+    "U2-12",
+    "U2-13",
+    "U2-14"
+  ],
+  "netlist_match": "PASS",
+  "eda_drc": [],
+  "mpn_spot_checks": "PASS",
+  "scope": "Schematic only; PCB layout and physical hardware not validated"
+}
