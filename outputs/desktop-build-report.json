@@ -1,0 +1,34 @@
+{
+  "status": "automated_verified_manual_acceptance_pending",
+  "pc_tests": 32,
+  "dsh_tests": 7,
+  "artifacts": [
+    {
+      "file": "AgentLight-0.2.0-windows-x64-setup.exe",
+      "bytes": 31859019,
+      "sha256": "4d2dc27cd1d173523a9877ca86c92f05ab4ecc7a6b29fee9ca88aa3e05db59f3"
+    },
+    {
+      "file": "AgentLight-0.2.0-windows-x64.zip",
+      "bytes": 49127793,
+      "sha256": "290ffb1d04a355b2758ecf1907efdd4f5054cdb75953c03a391bc892047117bb"
+    },
+    {
+      "file": "agent_light-0.2.0-py3-none-any.whl",
+      "bytes": 55358,
+      "sha256": "855c9e8548131daab4a6bde7328aaeb57469d2c32cd624e85cd791d7b7014f46"
+    },
+    {
+      "file": "agent-light-dsh-0.1.3-desktop.tgz",
+      "bytes": 13746,
+      "sha256": "2ec65db55690f7389d28988dea90a4489790624ddd2fa068ae96c49d6ac10017"
+    }
+  ],
+  "manual_pending": [
+    "hardware",
+    "real DSH migration/event chain",
+    "interactive install/upgrade/uninstall",
+    "Windows login",
+    "second machine"
+  ]
+}

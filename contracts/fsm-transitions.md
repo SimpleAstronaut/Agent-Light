@@ -11,3 +11,11 @@ Wait identity is attention_id + original turn_seq/turn_id within producer/sessio
 Display: ERROR > ATTENTION > RUNNING > COMPLETED > IDLE across all sources. Recovering/degraded or a 15-second lease expiry contributes an independent ERROR, never a fabricated chat failure. Server restart grants all known sources a fresh 15-second registration window; already degraded sources remain visibly degraded.
 
 Final event responses follow durable SQLite commit: applied, duplicate or stale. Same identity/different body is 409. 202 pending_identity must be retried. Body allowlist rejects content fields; no conversation text enters storage or USB.
+
+Explicit source management (desktop API v1): source_admin is independent metadata keyed by agent/producer.
+Absent rows mean enabled. A confirmed disable requires an expired lease and matching management generation;
+disabled sources and their sessions do not contribute to aggregate display. History and inbox remain intact.
+Disabled sources reject new heartbeat/events without renewing leases (final exact event retries still dedupe).
+Enable enters activation_pending and contributes ERROR, excluding old sessions until a strictly newer
+runtime_ready barrier and a matching healthy heartbeat restore enabled. Service restart preserves this gate.
+Clear never changes management state. Installation/uninstallation never implicitly disables a source.

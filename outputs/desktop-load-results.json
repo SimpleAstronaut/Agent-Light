@@ -1,0 +1,12 @@
+{
+  "sessions": 16,
+  "backlog_events": 1000,
+  "http_p95_ms": 4.226,
+  "http_max_ms": 6.292,
+  "service_loop_max_delay_ms": 14.298,
+  "normal_usb_max_interval_s": 1.059,
+  "slow_disk_seconds": 5.3,
+  "slow_disk_ui_invalidated": true,
+  "slow_disk_reconfirmed_after_set": true,
+  "slow_disk_link_loss_observed": true
+}

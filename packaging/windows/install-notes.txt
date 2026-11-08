@@ -1,0 +1,14 @@
+Agent Light desktop preview
+
+Close Agent Light and every DSH backend using its plugin before installing or upgrading.
+The installer does not stop processes or alter DSH launcher scripts.
+
+Use Agent Integrations > DSH to inspect your selected DSH environment, preview integration changes,
+back up and install the managed launcher block. Restart DSH after integration changes.
+
+Configuration, token, SQLite history, outbox and backups are kept in the user data directory.
+Uninstall runs a managed-integration precheck and preserves user data. Manually configured,
+unregistered overlays must be detached by their owner before removing the plugin files.
+
+Codex's real event adapter is not implemented. A successful RGB test confirms USB ACKs;
+it does not measure LED light output. See the included desktop guide for validation limits.

@@ -1,6 +1,7 @@
 import json
 import sqlite3
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from jsonschema import Draft202012Validator, FormatChecker
 
@@ -13,17 +14,33 @@ class Conflict(Exception):
     pass
 
 
+class SourceError(ValueError):
+    pass
+
+
+def utc_now():
+    return datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+
+
 class Store:
     def __init__(self, path, hold=300, brightness=35):
         self.db = sqlite3.connect(path)
-        self.db.execute("PRAGMA journal_mode=WAL")
-        self.db.execute("PRAGMA synchronous=FULL")
-        self.db.executescript("CREATE TABLE IF NOT EXISTS inbox(k TEXT PRIMARY KEY, body TEXT, status TEXT);"
-                              "CREATE TABLE IF NOT EXISTS state(id INTEGER PRIMARY KEY, body TEXT);")
-        row = self.db.execute("SELECT body FROM state WHERE id=1").fetchone()
-        self.s = json.loads(row[0]) if row else dict(sources={}, sessions={}, desired="IDLE", revision=0)
-        self.hold, self.brightness = hold, brightness
-        self.leases = {k: time.monotonic() for k in self.s['sources']}
+        try:
+            self.db.execute("PRAGMA journal_mode=WAL")
+            self.db.execute("PRAGMA synchronous=FULL")
+            self.db.executescript("CREATE TABLE IF NOT EXISTS inbox(k TEXT PRIMARY KEY, body TEXT, status TEXT);"
+                                  "CREATE TABLE IF NOT EXISTS state(id INTEGER PRIMARY KEY, body TEXT);")
+            self.db.execute("CREATE TABLE IF NOT EXISTS source_admin(k TEXT PRIMARY KEY, body TEXT NOT NULL)")
+            self.admin = {k: json.loads(body) for k, body in self.db.execute('SELECT k,body FROM source_admin')}
+            self.last_heartbeat_at = {}
+            self.rejected_after_disable_at = {}
+            row = self.db.execute("SELECT body FROM state WHERE id=1").fetchone()
+            self.s = json.loads(row[0]) if row else dict(sources={}, sessions={}, desired="IDLE", revision=0)
+            self.hold, self.brightness = hold, brightness
+            self.leases = {k: time.monotonic() for k in self.s['sources']}
+        except BaseException:
+            self.db.close()
+            raise
 
     def persist(self):
         self.db.execute("INSERT OR REPLACE INTO state VALUES(1,?)", (json.dumps(self.s),))
@@ -40,6 +57,7 @@ class Store:
                 raise Conflict()
             if old[1] != 'pending_identity':
                 return dict(event_id=e['event_id'], status='duplicate')
+        self._require_enabled(self.source_key(e))
         # Roll back the in-memory snapshot together with SQLite on unexpected errors.
         snapshot = json.dumps(self.s)
         try:
@@ -134,6 +152,7 @@ class Store:
             if type(e[k]) is not int or not 0 <= e[k] <= 9007199254740991:
                 raise ValueError('HEARTBEAT_SEQ')
         sk = self.source_key(e)
+        self._require_enabled(sk)
         with self.db:
             src = self.s['sources'].setdefault(sk, dict(runtime_seq=-1, ready_seq=-1, ready_id=None))
             if e['runtime_seq'] < src['runtime_seq']:
@@ -144,16 +163,28 @@ class Store:
                        health=e['health'] if (e['runtime_seq']==src['ready_seq'] and e['runtime_id']==src['ready_id']) or e['health']=='degraded' else 'recovering',
                        persisted_seq=e['persisted_seq'], acked_seq=e['acked_seq'])
             self.leases[sk] = time.monotonic()
+            self.last_heartbeat_at[sk] = utc_now()
+            admin = self.management(sk)
+            if (admin['mode'] == 'activation_pending' and e['runtime_seq'] > admin['enable_after_runtime_seq']
+                    and e['runtime_seq'] == src['ready_seq'] and e['runtime_id'] == src['ready_id']
+                    and src['health'] == 'healthy'):
+                self._save_admin(sk, {**admin, 'mode': 'enabled', 'generation': admin['generation'] + 1})
             self.aggregate()
             self.persist()
 
     def aggregate(self):
         states = ['IDLE']
         for sk, src in self.s['sources'].items():
+            mode = self.management(sk)['mode']
+            if mode == 'disabled':
+                continue
+            if mode == 'activation_pending':
+                states.append('ERROR')
+                continue
             if src.get('health') != 'healthy' or time.monotonic() - self.leases.get(sk, 0) > 15:
                 states.append('ERROR')
         for v in self.s['sessions'].values():
-            if v['retired']:
+            if v['retired'] or self.management(v['source'])['mode'] != 'enabled':
                 continue
             state = v['base']
             if state == 'CANCELLED' or (state == 'COMPLETED' and time.time() >= v['deadline']):
@@ -179,3 +210,66 @@ class Store:
                     v['base'] = 'IDLE'
             self.aggregate()
             self.persist()
+
+    def management(self, key):
+        return self.admin.get(key, dict(mode='enabled', generation=0, disabled_at=None,
+                                        enable_after_runtime_seq=-1))
+
+    def _save_admin(self, key, value):
+        self.db.execute('INSERT OR REPLACE INTO source_admin VALUES(?,?)', (key, json.dumps(value)))
+        self.admin[key] = value
+
+    def _require_enabled(self, key):
+        if self.management(key)['mode'] == 'disabled':
+            self.rejected_after_disable_at[key] = utc_now()
+            raise SourceError('PRODUCER_DISABLED')
+
+    def manage_source(self, request, enable):
+        fields = {'agent', 'producer_id', 'expected_generation', 'confirm'}
+        if (not isinstance(request, dict) or set(request) != fields or request['confirm'] is not True
+                or request['agent'] not in ('dsh', 'codex') or not isinstance(request['producer_id'], str)
+                or not 1 <= len(request['producer_id']) <= 128 or not request['producer_id'].isascii()
+                or type(request['expected_generation']) is not int or request['expected_generation'] < 0):
+            raise SourceError('INVALID_REQUEST')
+        key = self.source_key(request)
+        if key not in self.s['sources']:
+            raise SourceError('PRODUCER_NOT_FOUND')
+        admin = self.management(key)
+        if admin['generation'] != request['expected_generation']:
+            raise SourceError('SOURCE_STATE_CHANGED')
+        target = 'activation_pending' if enable and admin['mode'] == 'disabled' else admin['mode'] if enable else 'disabled'
+        if target != admin['mode']:
+            if not enable and time.monotonic() - self.leases.get(key, 0) <= 15:
+                raise SourceError('PRODUCER_STILL_REPORTING')
+            src = self.s['sources'][key]
+            value = {**admin, 'mode': target, 'generation': admin['generation'] + 1}
+            if enable:
+                value['enable_after_runtime_seq'] = max(src.get('runtime_seq', -1), src.get('ready_seq', -1))
+            else:
+                value['disabled_at'] = utc_now()
+            snapshot = json.dumps(self.s)
+            try:
+                with self.db:
+                    self._save_admin(key, value)
+                    self.aggregate()
+                    self.persist()
+            except Exception:
+                self.s = json.loads(snapshot)
+                self.admin[key] = admin
+                raise
+            admin = value
+        return dict(agent=request['agent'], producer_id=request['producer_id'], management_state=admin['mode'],
+                    management_generation=admin['generation'], **({'restart_required': admin['mode'] == 'activation_pending'} if enable else {}))
+
+    def producers(self):
+        result = []
+        for key, src in self.s['sources'].items():
+            agent, producer_id = json.loads(key)
+            admin = self.management(key)
+            result.append(dict(agent=agent, producer_id=producer_id, **src,
+                management_state=admin['mode'], management_generation=admin['generation'],
+                sessions_participating=admin['mode'] == 'enabled',
+                lease_expired=time.monotonic()-self.leases.get(key, 0)>15,
+                last_heartbeat_at=self.last_heartbeat_at.get(key),
+                rejected_after_disable_at=self.rejected_after_disable_at.get(key)))
+        return result

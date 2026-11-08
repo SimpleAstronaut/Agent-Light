@@ -1,0 +1,25 @@
+{
+  "version": "0.2.1",
+  "pc_tests": 35,
+  "frozen_navigation": "passed",
+  "installer_compile": "passed",
+  "artifacts": [
+    {
+      "file": "AgentLight-0.2.1-windows-x64-setup.exe",
+      "bytes": 31889598,
+      "sha256": "ce46dd43bf49c552c1d90e446d3a4c0e1b4c8afccc2cad430877296e6f0a0bf8"
+    },
+    {
+      "file": "AgentLight-0.2.1-windows-x64.zip",
+      "bytes": 49149165,
+      "sha256": "88fc0ea24569d276e62d0656fb7f226fdc74dee39b36178d4b0c9536bbe72b9e"
+    },
+    {
+      "file": "agent_light-0.2.1-py3-none-any.whl",
+      "bytes": 58845,
+      "sha256": "0da612d128ca6f08db3f02a66b36d67024b52f89e039e5e54ea0f13017fd4a2d"
+    }
+  ],
+  "scope": "Agent navigation only; actual event adapters remain DSH, Codex/ZCode/WorkBuddy pending",
+  "documentation": "General installation/user manuals bundled and exported for preview Release"
+}

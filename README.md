@@ -4,11 +4,13 @@
 
 <img src="assets/agent-light-board.jpg" alt="Agent Light 实板完成态绿灯" width="420">
 
-<img src="D:\projects\agent-light\pic.jpg" alt="pic"  />Agent Light 是一套本地运行的 USB 状态灯系统，用红、黄、绿三颗 LED 显示 AI 编程助手的运行、等待、失败和完成状态。
+Agent Light 是一套本地运行的 USB 状态灯系统，用红、黄、绿三颗 LED 显示 AI 编程助手的运行、等待、失败和完成状态。
 
 项目包含 Rev A 硬件、STM32 固件、Python 上位机和 DeepSeek Harness（DSH）插件。插件采集生命周期事件，上位机汇总多个聊天的状态，再通过 USB CDC 控制灯板。
 
 **当前可用链路：DSH Web → 插件 → Python 上位机 → USB 灯板。** 2026-11-06 已完成真实对话的“运行黄灯、完成绿灯”联调。Codex 目前仅预留统一事件接口，尚未实现真实适配器。
+
+桌面预览版下载见 [GitHub Release](https://github.com/SimpleAstronaut/Agent-Light/releases/tag/v0.2.1-preview.1)，安装见 [安装手册](docs/installation-guide.md)。桌面版使用与源码运行见 [桌面指南](docs/desktop-guide.md)，实施与验证状态见 [进度记录](docs/superpowers/plans/2026-11-08-desktop-ui-progress.md)。
 
 ## 阅读导航
 
@@ -30,10 +32,10 @@
 |---|---|---|
 | 硬件 | 原理图、PCB、BOM、坐标和 Gerber 初稿；用户已焊接实板 | Rev A，STM32F042F6P6 |
 | 固件 | FreeRTOS 静态任务、USB CDC、协议解析、PWM 灯效、链路看门狗 | 1.0.0 / USB 协议 v1 |
-| 上位机 | 本地 HTTP、SQLite 状态持久化、聚合、串口管理、CLI | Python 包 0.1.1 |
+| 上位机 | 本地 HTTP、SQLite 状态持久化、聚合、串口管理、CLI | Python 包 0.2.1 |
 | DSH 插件 | 顶层会话、回合、审批与提问观察，Worker 持久队列和补报 | 0.1.3 |
 | Codex | 通用 schema、来源隔离和聚合接口已预留 | 真实适配器未实现 |
-| 桌面界面 | 当前使用终端启动和管理 | GUI、托盘、自启、发布安装器未实现 |
+| 桌面界面 | PySide6 桌面、Agent 二级导航、托盘、设备管理、DSH 确认式接入、安装器 | 0.2.1，实板与登录验收见实施记录 |
 
 ```mermaid
 flowchart LR
@@ -178,7 +180,7 @@ npm.cmd run build
 Pop-Location
 ```
 
-从源码运行推荐使用上述 editable 安装。预构建文件也保存在 `outputs/packages/`，当前上位机为 `agent_light-0.1.1-py3-none-any.whl`，插件为 `agent-light-dsh-0.1.3.tgz`；旧版本保留作历史产物。
+从源码运行推荐使用上述 editable 安装。预构建文件也保存在 `outputs/packages/`，桌面版为 `AgentLight-0.2.1-windows-x64-setup.exe` 或同名便携 zip，Python 包为 `agent_light-0.2.1-py3-none-any.whl`。DSH 插件运行版本仍为 0.1.3，带桌面检测工具的归档为 `agent-light-dsh-0.1.3-desktop.tgz`；旧版本保留作历史产物。
 
 ### 3. 初始化配置
 
@@ -207,7 +209,7 @@ pc/.venv/Scripts/agent-light.exe status
 pc/.venv/Scripts/agent-light.exe test
 ```
 
-`status` 中 `connected: true` 和 `serial_diagnostic: "OK"` 表示设备已确认通信。`test` 约三秒依次显示红、黄、绿，然后恢复当前聚合灯态。
+`status.device.confirmed: true` 表示本次连接的 SET ACK 与新鲜 STATUS 一致；`connected` 保留为通信标志。`test` 在设备就绪后依次红、黄、绿，每色 ACK 后保持至少一秒，再以 ACK 恢复最新聚合灯态。
 
 自动发现按配置的 VID/PID 和可选序列号匹配；找不到或匹配多块板时，按“配置说明”指定实际 COM 口。`COM6` 是一次实板报告使用的端口，不保证下次仍相同。
 
@@ -400,7 +402,7 @@ Get-CimInstance Win32_Process |
 | `serve` | 启动本地服务与串口 worker |
 | `health` | 查看服务、协议及来源声明；不代表灯板已连接 |
 | `status` | 查看来源健康、会话、聚合状态和设备确认 |
-| `test` | 三秒红黄绿测试，不改写 Agent 会话 |
+| `test` | ACK 驱动的红黄绿测试，不改写 Agent 会话；未就绪退出 3 |
 | `clear` | 清除会话的 ERROR/COMPLETED 基础状态 |
 | `overlay` | 生成直接引用本地构建文件的 DSH overlay |
 | `overlay --installed` | 生成覆盖已安装 bundle 节点的 overlay |

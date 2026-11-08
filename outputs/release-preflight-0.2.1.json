@@ -1,0 +1,44 @@
+{
+  "tag": "v0.2.1-preview.1",
+  "eligible_channel": "pre-release",
+  "stable_eligible": false,
+  "reason": "Hardware, Windows login, interactive installer/upgrade/uninstall and second-machine acceptance pending",
+  "pc_tests": 35,
+  "dsh_tests": 7,
+  "frozen_bundle": "passed after generalizing manuals",
+  "installer_compile": "passed",
+  "code_signed": false,
+  "credential_pattern_scan": "passed",
+  "artifacts": [
+    {
+      "file": "AgentLight-0.2.1-windows-x64-setup.exe",
+      "bytes": 31889598,
+      "sha256": "ce46dd43bf49c552c1d90e446d3a4c0e1b4c8afccc2cad430877296e6f0a0bf8"
+    },
+    {
+      "file": "AgentLight-0.2.1-windows-x64.zip",
+      "bytes": 49149165,
+      "sha256": "88fc0ea24569d276e62d0656fb7f226fdc74dee39b36178d4b0c9536bbe72b9e"
+    },
+    {
+      "file": "agent_light-0.2.1-py3-none-any.whl",
+      "bytes": 58845,
+      "sha256": "0da612d128ca6f08db3f02a66b36d67024b52f89e039e5e54ea0f13017fd4a2d"
+    },
+    {
+      "file": "agent-light-dsh-0.1.3-desktop.tgz",
+      "bytes": 13746,
+      "sha256": "2ec65db55690f7389d28988dea90a4489790624ddd2fa068ae96c49d6ac10017"
+    },
+    {
+      "file": "AgentLight-0.2.1-installation-guide.md",
+      "bytes": 4467,
+      "sha256": "c1a919ebec251511dfc81e5f7d9b67bc250da7e6d89a1d0f47231bb16eaa8c59"
+    },
+    {
+      "file": "AgentLight-0.2.1-user-manual.md",
+      "bytes": 17759,
+      "sha256": "a735ffd68f19e3bedfb75e28d8ca633dbaac35e044aa828e6d4f9f348e148152"
+    }
+  ]
+}

@@ -10,6 +10,7 @@
   },
   "files": [
     "dist",
+    "tools/inspect-host.mjs",
     "cordis.patch.yml"
   ],
   "dsh": {

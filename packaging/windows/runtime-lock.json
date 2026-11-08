@@ -1,0 +1,243 @@
+{
+  "status": "automated_verified_manual_acceptance_pending",
+  "verified": false,
+  "resolved_on": "2026-11-08",
+  "target": {
+    "os": "Windows",
+    "release": "11",
+    "architecture": "AMD64",
+    "python": "3.14.0"
+  },
+  "installer": {
+    "name": "Inno Setup",
+    "version": "6.7.4",
+    "sha256": "a549929319f9120716677c685535ca4671e4b937b5fdc87e2585f32d8eb30e8c",
+    "authenticode": "Valid / Pyrsys B.V.",
+    "source": "https://jrsoftware.org/isdl.php"
+  },
+  "node": "22.12.0",
+  "typescript": "5.7.3",
+  "dependencies": [
+    {
+      "name": "PySide6",
+      "version": "6.10.3",
+      "hashes": {
+        "sha256": "c7847e4ae7b1aef1aad822ca7f175c2100c4f9f3af679125cbbdf2b364b32007"
+      }
+    },
+    {
+      "name": "pyinstaller",
+      "version": "6.16.0",
+      "hashes": {
+        "sha256": "bc10eb1a787f99fea613509f55b902fbd2d8b73ff5f51ff245ea29a481d97d41"
+      }
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.14.5",
+      "hashes": {
+        "sha256": "6f967dde489ca6a8c02d093ab245d2cbf50ccb5c36adf0188b17b0ca39d24b67"
+      }
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5",
+      "hashes": {
+        "sha256": "c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"
+      }
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "hashes": {
+        "sha256": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce"
+      }
+    },
+    {
+      "name": "PySide6_Addons",
+      "version": "6.10.3",
+      "hashes": {
+        "sha256": "b465b38d1ec3476a9197441fe6a62a1fac97c45a8094f11c2d7e318aee1e3fb3"
+      }
+    },
+    {
+      "name": "PySide6_Essentials",
+      "version": "6.10.3",
+      "hashes": {
+        "sha256": "051a70e2df79cf1c012a208ad82a98e8de23ca7fe3b0f3344d07152d15705b59"
+      }
+    },
+    {
+      "name": "shiboken6",
+      "version": "6.10.3",
+      "hashes": {
+        "sha256": "38261c88e87a1c32d1302b642b755470d2369c78af3c7d7d9e95d631f79b556c"
+      }
+    },
+    {
+      "name": "multidict",
+      "version": "7.2.1",
+      "hashes": {
+        "sha256": "6e22756c6e2d4f57ead0d2e6be179d8a16d661bee424b81de0c6c0c1305ec39f"
+      }
+    },
+    {
+      "name": "yarl",
+      "version": "1.25.1",
+      "hashes": {
+        "sha256": "acfa7e22aa6c6e7a5996a41d275bfa01efa7ea56ab890590280e9063e2cf5c1b"
+      }
+    },
+    {
+      "name": "aiohappyeyeballs",
+      "version": "2.7.1",
+      "hashes": {
+        "sha256": "9243213661e29250eb41368e5daa826fc017156c3b8a11440826b2e3ed376472"
+      }
+    },
+    {
+      "name": "aiosignal",
+      "version": "1.4.0",
+      "hashes": {
+        "sha256": "053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e"
+      }
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "hashes": {
+        "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+      }
+    },
+    {
+      "name": "frozenlist",
+      "version": "1.8.0",
+      "hashes": {
+        "sha256": "3e0761f4d1a44f1d1a47996511752cf3dcec5bbdd9cc2b4fe595caf97754b7a0"
+      }
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "hashes": {
+        "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+      }
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "hashes": {
+        "sha256": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe"
+      }
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "hashes": {
+        "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+      }
+    },
+    {
+      "name": "pefile",
+      "version": "2023.2.7",
+      "hashes": {
+        "sha256": "da185cd2af68c08a6cd4481f7325ed600a88f6a813bad9dea07ab3ef73d8d8d6"
+      }
+    },
+    {
+      "name": "propcache",
+      "version": "0.5.4",
+      "hashes": {
+        "sha256": "0a095db8e15a6020db149ecbed6461939fe74f6acaa3ae8b702a1fe8c38cd983"
+      }
+    },
+    {
+      "name": "pyinstaller-hooks-contrib",
+      "version": "2026.9",
+      "hashes": {
+        "sha256": "fb3e67dd64122561724c48ad0366ac9e8c16e638b63bf7d85de03bf3fdbf06c3"
+      }
+    },
+    {
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "hashes": {
+        "sha256": "8a1513379d709975552d202d942d9837758905c8d01eb82b8bcc30918929e7b8"
+      }
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "hashes": {
+        "sha256": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231"
+      }
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "hashes": {
+        "sha256": "837c6b305e26fe0f75b15c92cf3b2ba29e0ae19dc40b1c557b026cb426347d0c"
+      }
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1",
+      "hashes": {
+        "sha256": "ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2"
+      }
+    },
+    {
+      "name": "altgraph",
+      "version": "0.17.5",
+      "hashes": {
+        "sha256": "f3a22400bce1b0c701683820ac4f3b159cd301acab067c51c653e06961600597"
+      }
+    }
+  ],
+  "verification": {
+    "dependency_resolution": "passed (pip dry-run)",
+    "qt_smoke": "passed",
+    "onedir": "passed (0.2.1): Agent navigation + Qt + console health/status + schema + metadata + complete plugin + missing-resource rejection + Worker + Unicode/space path",
+    "external_node": "passed: controlled environment + inspect-host HOST_NOT_FOUND; real DSH compatibility pending",
+    "installer_compile": "passed",
+    "hardware": "pending: no VID/PID-matched board enumerated",
+    "interactive_install_upgrade_uninstall": "pending",
+    "windows_login": "pending",
+    "second_machine": "pending",
+    "pc_tests": "35 passed; Qt installed, no skips (0.2.1)",
+    "dsh_tests": "7 passed after TypeScript rebuild",
+    "performance": {
+      "sessions": 16,
+      "backlog_events": 1000,
+      "http_p95_ms": 4.226,
+      "http_max_ms": 6.292,
+      "service_loop_max_delay_ms": 14.298,
+      "normal_usb_max_interval_s": 1.059,
+      "slow_disk_seconds": 5.3,
+      "slow_disk_ui_invalidated": true,
+      "slow_disk_reconfirmed_after_set": true,
+      "slow_disk_link_loss_observed": true
+    },
+    "gui_render": "0.2.1 DSH/Codex/ZCode/WorkBuddy pages rendered and inspected",
+    "compileall_diff_check": "passed",
+    "agent_navigation": "passed (0.2.1): registered Agent panels in frozen package, preserved DSH preferences/input, independent actions and late-result isolation",
+    "performance_baseline_version": "0.2.0; backend unchanged by 0.2.1 navigation"
+  },
+  "required_resources": [
+    "plugins/dsh/dist (entire directory)",
+    "plugins/dsh/package.json",
+    "plugins/dsh/tools/inspect-host.mjs",
+    "agent_light/event-schema.json",
+    "Qt platform plugins",
+    "service and dependency version metadata"
+  ],
+  "build_ruling": "Exclude foreign ICU from PATH; preload Windows System32 ICU before Qt (Windows 11 target).",
+  "service_version": "0.2.1",
+  "host_verification": {
+    "node": "22.23.2",
+    "dsh-agent": "0.2.1-rc.2",
+    "dsh-session": "0.2.1-rc.2",
+    "cordis": "4.0.5",
+    "fingerprints": "passed (read-only real host)"
+  }
+}

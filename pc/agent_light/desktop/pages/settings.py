@@ -1,0 +1,52 @@
+from PySide6.QtCore import Signal, Qt
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QFormLayout, QHBoxLayout, QLabel, QSpinBox, QSlider, QCheckBox, QPushButton
+
+
+class SettingsPage(QWidget):
+    save = Signal(object)
+    startup_changed = Signal(bool)
+    tray_changed = Signal(bool)
+
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        title = QLabel('设置')
+        title.setObjectName('pageTitle')
+        layout.addWidget(title)
+        form = QFormLayout()
+        self.brightness = QSpinBox()
+        self.brightness.setRange(20,100)
+        self.slider = QSlider(Qt.Orientation.Horizontal)
+        self.slider.setRange(20,100)
+        self.slider.valueChanged.connect(self.brightness.setValue)
+        self.brightness.valueChanged.connect(self.slider.setValue)
+        row = QHBoxLayout()
+        row.addWidget(self.slider,1)
+        row.addWidget(self.brightness)
+        form.addRow('亮度（%）',row)
+        self.hold = QSpinBox()
+        self.hold.setRange(0,2147483647)
+        self.hold.setSuffix(' 秒')
+        form.addRow('完成保持（0 表示不保持）', self.hold)
+        self.save_button = QPushButton('保存并应用显示配置')
+        self.save_button.setObjectName('primary')
+        self.save_button.clicked.connect(lambda: self.save.emit(dict(brightness=self.brightness.value(), completedHoldSeconds=self.hold.value())))
+        form.addRow('',self.save_button)
+        self.saved = QLabel('')
+        self.saved.setWordWrap(True)
+        form.addRow('',self.saved)
+        self.startup = QCheckBox('登录 Windows 时启动并驻留托盘')
+        self.startup.toggled.connect(self.startup_changed.emit)
+        form.addRow('开机启动', self.startup)
+        self.close_to_tray = QCheckBox('关闭窗口时保持后台运行')
+        self.close_to_tray.toggled.connect(self.tray_changed.emit)
+        form.addRow('窗口行为', self.close_to_tray)
+        layout.addLayout(form)
+        self.help = QLabel('源码运行时不写入开机启动项。显示配置保存成功后，设备确认仍以状态页为准。')
+        self.help.setWordWrap(True)
+        layout.addWidget(self.help)
+        layout.addStretch()
+
+    def set_display(self, cfg):
+        self.brightness.setValue(cfg['brightness'])
+        self.hold.setValue(min(cfg['completedHoldSeconds'],2147483647))

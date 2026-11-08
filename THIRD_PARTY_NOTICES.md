@@ -34,3 +34,24 @@ EDA project packages may contain library symbol/footprint references or assets
 from component libraries. Those third-party library assets retain their own
 terms; the MIT grant applies to original project contributions. Referenced
 manufacturer datasheets are linked rather than republished in this repository.
+
+## Windows desktop distribution
+
+The onedir desktop distribution includes CPython 3.14.0 (Python Software
+Foundation License), PySide6/shiboken6 and the Qt 6.10.3 Core, Gui, Widgets,
+Network and Svg runtime (Qt open-source LGPL-3.0/GPL-3.0 alternatives and the
+applicable Qt exceptions), aiohttp and its dependencies, pyserial (BSD),
+jsonschema and its dependencies. Exact versions and archive hashes are recorded
+in `packaging/windows/runtime-lock.json`. The distribution's `licenses/`
+directory carries available dependency notices and the Qt license texts.
+
+Qt DLLs remain separate and replaceable in `_internal/PySide6`; the build does
+not statically link Qt. Unused Qt PDF, QML, Quick and Virtual Keyboard components
+are excluded from the desktop bundle. Upstream Qt sources and licensing are
+available at https://code.qt.io/cgit/qt/ and https://www.qt.io/licensing/.
+PySide sources are at https://code.qt.io/cgit/pyside/pyside-setup.git/.
+Agent Light build scripts are included in this MIT-licensed repository.
+
+PyInstaller 6.16.0 creates the frozen application; its bootloader distribution
+exception applies. Inno Setup 6.7.4 creates the per-user installer and retains
+its upstream copyright and license. Node, DSH and Cordis are not bundled.
