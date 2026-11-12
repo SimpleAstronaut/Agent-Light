@@ -1,0 +1,76 @@
+{
+  "units": "mm",
+  "pcb_to_shell_transform": [
+    [
+      0,
+      1,
+      0,
+      -20
+    ],
+    [
+      0,
+      0,
+      -1,
+      -6.6
+    ],
+    [
+      -1,
+      0,
+      0,
+      6
+    ]
+  ],
+  "shell_bbox": [
+    -22.0,
+    -13.000000000000007,
+    -8.0,
+    22.000000000000004,
+    2.694222958124177e-15,
+    8.0
+  ],
+  "native_shell_bbox": [
+    -22.000000000000004,
+    -2.694222958124177e-15,
+    -8.0,
+    22.0,
+    13.000000000000007,
+    8.0
+  ],
+  "assembly_frame": "Historical -Y opening frame; native SLDPRT/STEP now opens +Y.",
+  "shell_solid_count": 1,
+  "shell_valid": true,
+  "lid_bbox_assembled": [
+    -22.0,
+    -15.15,
+    -8.0,
+    22.000000000000007,
+    -13.15,
+    8.0
+  ],
+  "pcb_bbox_assembled": [
+    -21.366992760739002,
+    -11.451038213656998,
+    -5.987322834646003,
+    19.987378714757,
+    -6.6,
+    5.98729997459995
+  ],
+  "old_static_interference_mm3": 3.445435832601319,
+  "new_static_interference_mm3": 0.0,
+  "old_vertical_path_envelope_overlap_sum_mm3": 16.131413720718967,
+  "new_vertical_path_envelope_overlap_sum_mm3": 0.0,
+  "lid_pcb_interference_mm3": 0.0,
+  "original_files_unchanged": {
+    "零件1.SLDPRT": true,
+    "顶盖.SLDPRT": true,
+    "shell.SLDASM": true,
+    "零件1.STEP": true,
+    "3D_PCB1_2026-11-11.step": true
+  },
+  "limits": [
+    "STEP excludes hand-solder fillets and real print tolerances.",
+    "Vertical path uses conservative component boxes; zero volume means touching allowed.",
+    "Cable overmold dimensions not supplied; confirm plug access on prototype.",
+    "Nominal glue gap 0.15 mm; no retention force or thermal test performed."
+  ]
+}

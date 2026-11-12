@@ -1,0 +1,8 @@
+# Preserve native CAD and manufacturing exports byte for byte.
+*.SLDPRT binary
+*.SLDASM binary
+*.step binary
+*.STEP binary
+*.stl binary
+*.STL binary
+*.dxf binary

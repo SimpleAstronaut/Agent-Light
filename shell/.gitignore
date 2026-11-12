@@ -1,0 +1,10 @@
+# SolidWorks session locks and translator diagnostics
+~$*
+*.err
+# Rebuild these large inspection intermediates with verify_fit.py
+revision-2026-11-12/PCB-positioned.step
+revision-2026-11-12/装配检查-RevB.step
+revision-2026-11-12/开盖装配检查-RevB.step
+# Publish the explicitly bed-oriented STL; native SW STL may be translated on export
+revision-2026-11-12/底壳-RevB.STL
+revision-2026-11-12/previews/base_*.png

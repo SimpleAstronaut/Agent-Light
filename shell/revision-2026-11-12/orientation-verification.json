@@ -1,0 +1,41 @@
+{
+  "feature": "RevB_DefaultOrientation_OpeningPlusY",
+  "opening_direction": "+Y",
+  "before": {
+    "path": "D:\\projects\\agent-light\\shell\\revision-2026-11-12\\底壳-RevB.SLDPRT",
+    "bbox_mm": [
+      -22.0,
+      -13.0,
+      -8.0,
+      22.0,
+      0.0,
+      8.0
+    ],
+    "volume_mm3": 3241.0599999999968,
+    "face_count": 51
+  },
+  "after": {
+    "path": "D:\\projects\\agent-light\\shell\\revision-2026-11-12\\底壳-RevB.SLDPRT",
+    "bbox_mm": [
+      -22.0,
+      -0.0,
+      -8.0,
+      22.0,
+      13.0,
+      8.0
+    ],
+    "volume_mm3": 3241.0599999999968,
+    "face_count": 51
+  },
+  "checkpoint": "D:\\projects\\agent-light\\shell\\revision-2026-11-12\\底壳-RevB-调整坐标前.SLDPRT",
+  "saved": true,
+  "save_errors": 0,
+  "save_warnings": 0,
+  "api_euler_angles_deg": [
+    180,
+    0,
+    0
+  ],
+  "actual_rotation_z_deg": 180,
+  "rotation_verified_by_exported_vertex_matches": 92
+}
